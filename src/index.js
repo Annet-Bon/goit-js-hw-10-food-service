@@ -1,9 +1,6 @@
 import menuElements from './menu.json';
 import menuTemplate from './templates/menu-items.hbs';
-
-const dishGallery = document.querySelector('.js-menu');
-const body = document.querySelector('body');
-const switchThemeColor = document.querySelector('.theme-switch__toggle');
+import { dishGallery, body, switchThemeColor } from './path.js';
 
 switchThemeColor.addEventListener('change', clickSwitch);
 document.addEventListener('DOMContentLoaded', getThemeFromLocalStorage);
