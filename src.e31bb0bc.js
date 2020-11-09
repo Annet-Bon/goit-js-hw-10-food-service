@@ -2306,7 +2306,7 @@ var templateFunction = _handlebars.default.template({
           "column": 25
         }
       }
-    })) != null ? stack1 : "") + "            </ul>\r\n        </div>\r\n\r\n        <button class=\"card__button button\">\r\n            <i class=\"material-icons button__icon\"> shopping_cart </i>\r\n            В корзину\r\n        </button>\r\n    </article>\r\n</li>\r\n";
+    })) != null ? stack1 : "") + "            </ul>\r\n        </div>\r\n        <button class=\"card__button button\">\r\n            <i class=\"material-icons button__icon\"> shopping_cart </i>\r\n            В корзину\r\n        </button>\r\n    </article>\r\n</li>\r\n";
   },
   "2": function _(container, depth0, helpers, partials, data) {
     return "                <li class=\"tag-list__item\">" + container.escapeExpression(container.lambda(depth0, depth0)) + "</li>\r\n";
@@ -2334,7 +2334,7 @@ var templateFunction = _handlebars.default.template({
           "column": 0
         },
         "end": {
-          "line": 29,
+          "line": 28,
           "column": 9
         }
       }
@@ -2345,41 +2345,60 @@ var templateFunction = _handlebars.default.template({
 
 var _default = templateFunction;
 exports.default = _default;
-},{"handlebars/dist/handlebars.runtime":"../node_modules/handlebars/dist/handlebars.runtime.js"}],"index.js":[function(require,module,exports) {
+},{"handlebars/dist/handlebars.runtime":"../node_modules/handlebars/dist/handlebars.runtime.js"}],"path.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.switchThemeColor = exports.body = exports.dishGallery = void 0;
+var dishGallery = document.querySelector('.js-menu');
+exports.dishGallery = dishGallery;
+var body = document.querySelector('body');
+exports.body = body;
+var switchThemeColor = document.querySelector('.theme-switch__toggle');
+exports.switchThemeColor = switchThemeColor;
+},{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _menu = _interopRequireDefault(require("./menu.json"));
 
 var _menuItems = _interopRequireDefault(require("./templates/menu-items.hbs"));
 
+var _path = require("./path.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var dishGallery = document.querySelector('.js-menu');
-var body = document.querySelector('body');
-var switchThemeColor = document.querySelector('.theme-switch__toggle');
-switchThemeColor.addEventListener('change', clickSwitch);
+_path.switchThemeColor.addEventListener('change', clickSwitch);
+
 document.addEventListener('DOMContentLoaded', getThemeFromLocalStorage);
 var markup = (0, _menuItems.default)(_menu.default);
-dishGallery.insertAdjacentHTML('beforeend', markup);
+
+_path.dishGallery.insertAdjacentHTML('beforeend', markup);
+
 var themeColor = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme'
 };
 
 function onDarkThemeClick() {
-  body.classList.add(themeColor.DARK);
-  body.classList.remove(themeColor.LIGHT);
+  _path.body.classList.add(themeColor.DARK);
+
+  _path.body.classList.remove(themeColor.LIGHT);
+
   localStorage.setItem("theme", themeColor.DARK);
 }
 
 function onLightThemeClick() {
-  body.classList.add(themeColor.LIGHT);
-  body.classList.remove(themeColor.DARK);
+  _path.body.classList.add(themeColor.LIGHT);
+
+  _path.body.classList.remove(themeColor.DARK);
+
   localStorage.setItem("theme", themeColor.LIGHT);
 }
 
 function clickSwitch(evt) {
-  if (switchThemeColor.checked) {
+  if (_path.switchThemeColor.checked) {
     onDarkThemeClick();
   } else {
     onLightThemeClick();
@@ -2391,10 +2410,10 @@ function getThemeFromLocalStorage() {
 
   if (theme === themeColor.DARK) {
     onDarkThemeClick();
-    switchThemeColor.checked = true;
+    _path.switchThemeColor.checked = true;
   }
 }
-},{"./menu.json":"menu.json","./templates/menu-items.hbs":"templates/menu-items.hbs"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./menu.json":"menu.json","./templates/menu-items.hbs":"templates/menu-items.hbs","./path.js":"path.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -2422,7 +2441,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52328" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53231" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
